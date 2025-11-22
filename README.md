@@ -11,39 +11,35 @@ Nutzer:innen können Netze mit Standort, Größe und Beschreibung erfassen, den 
 Die Anwendung wurde mit **Jakarta EE (JSF, JPA)** umgesetzt und läuft vollständig lokal über **Payara Micro**.  
 Eine H2-Datenbank wird automatisch erzeugt.
 
-## Enthaltene Dateien
+## Projektstruktur (Auszug)
 
-### Quellcode & Konfiguration
-- `src/main/java/` – Java-Quellcode (Controller, Repositories, Entities)
-- `src/main/resources/` – Ressourcen (u. a. `persistence.xml`)
-- `src/main/webapp/` – JSF-Seiten (`index.xhtml`, `netz-bearbeiten.xhtml`, `personen.xhtml`)
-- `pom.xml` – Maven-Konfiguration  
-- `run.bat` – Startskript für das Projekt  
-- `README.md` – Diese Projektbeschreibung
+- `pom.xml` – Maven-Projektkonfiguration  
+- `run.bat` – Startskript für Payara Micro und Deployment  
+- `src/main/webapp/` – JSF-Seiten (`index.xhtml`, `netz-bearbeiten.xhtml`, `personen.xhtml`)  
+- `src/main/java/` – Java-Code (Entities, Repositories, Controller, Setup)  
+- `src/main/resources/META-INF/persistence.xml` – JPA-Konfiguration  
+- `tools/payara/` – Verzeichnis für die Payara-Micro-JAR (siehe unten)  
 
-### Payara Micro (aufgrund GitHub-Limit geteilt)
-Im Verzeichnis: tools/payara/ liegen vier Archive:
+Automatisch erzeugte Ordner (nicht im Repo notwendig, werden lokal angelegt):
 
-- payara-micro.zip.001
-- payara-micro.zip.002
-- payara-micro.zip.003
-- payara-micro.zip.004
+- `db/` – H2-Datenbankdateien  
+- `target/` – Build-Output (WAR-Datei)  
+- `payara_rt/` – Laufzeitverzeichnis von Payara Micro
 
-Diese ersetzen die ursprüngliche `payara-micro.jar`, weil GitHub einzelne Dateien nur bis **25 MB** akzeptiert.
+## Payara Micro
 
-**So wird die Datei wiederhergestellt:**
+Aus Platzgründen ist **Payara Micro nicht im Repository enthalten**.  
+Für den Start der Anwendung wird eine Payara-Micro-6.x-Version benötigt.
 
-1. Alle vier Dateien in denselben Ordner legen:  
-   `tools/payara/`
-2. Rechtsklick → „Alle extrahieren“
-3. Das Ergebnis ist: tools/payara/payara-micro.jar
+### Payara Micro herunterladen
 
-Diese Datei wird **für den Start zwingend benötigt**.
+1. Website von Payara öffnen (Download-Bereich für **Payara Micro 6**).  
+2. Die aktuelle 6.x-Version von Payara Micro als JAR herunterladen.  
+3. Datei in folgendem Ordner ablegen: C:\work\ghostnet\tools\payara\payara-micro.jar
+4. Falls der Download einen anderen Namen trägt  
+(z. B. `payara-micro-6.2024.x.jar`), bitte in **payara-micro.jar** umbenennen.
 
-### Automatisch erzeugte Ordner:
-- `db/` – Lokale H2-Datenbankdateien
-- `payara_rt/` – Arbeitsverzeichnis von Payara Micro
-- `target/` – Generiertes WAR-File
+Getestet wurde die Anwendung mit einer 6.x-Version von Payara Micro.
 
 ## Systemvoraussetzungen
 
@@ -57,14 +53,7 @@ Keine zusätzliche Installation von Datenbanken oder Servern notwendig.
 ## Start der Anwendung
 
 1. Projekt nach **C:\work\ghostnet\\** kopieren.  
-2. Die vier Payara-Archive im Ordner `tools/payara/` **wieder zu einer Datei zusammenführen**:
-- payara-micro.zip.001
-- payara-micro.zip.002
-- payara-micro.zip.003
-- payara-micro.zip.004  
-→ Alle vier Dateien markieren → Rechtsklick → *„Alle extrahieren“*  
-→ Ergebnis:
-tools/payara/payara-micro.jar
+2. Payara Micro wie oben beschrieben herunterladen und ablegen unter: C:\work\ghostnet\tools\payara\payara-micro.jar
 3. Java-Version prüfen: java -version
 4. `run.bat` ausführen.  
 5. Browser öffnen und aufrufen: http://localhost:8080/ghostnet
