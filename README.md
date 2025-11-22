@@ -61,7 +61,7 @@ Keine zusätzliche Installation von Datenbanken oder Servern notwendig.
 - payara-micro.zip.001
 - payara-micro.zip.002
 - payara-micro.zip.003
-- payara-micro.zip.004
+- payara-micro.zip.004  
 → Alle vier Dateien markieren → Rechtsklick → *„Alle extrahieren“*  
 → Ergebnis:
 tools/payara/payara-micro.jar
