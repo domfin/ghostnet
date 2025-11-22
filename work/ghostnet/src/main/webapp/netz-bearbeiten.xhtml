@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Geisternetz bearbeiten</title>
+    <style>
+        :root { --gap: 12px; --gap-lg: 18px; }
+        body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+        .container { max-width: 860px; margin: 0 auto; padding: 16px; }
+        h1 { margin: 0 0 var(--gap-lg) 0; }
+        .form-grid { display: grid; grid-template-columns: 1fr; gap: var(--gap-lg); }
+        .field label { display: block; font-weight: 600; margin-bottom: 6px; }
+        .field select, .field input[type="text"], .field textarea {
+            width: 100%; box-sizing: border-box; padding: 8px 10px;
+        }
+        .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+        @media (max-width: 700px) { .row-2 { grid-template-columns: 1fr; } }
+        .actions { margin-top: var(--gap-lg); display: flex; gap: var(--gap); align-items: center; }
+    </style>
+</h:head>
+<h:body>
+
+    <!-- URL-Parameter ?id=... übernehmen und Datensatz laden -->
+    <f:metadata>
+        <f:viewParam name="id" value="#{netzController.editId}" />
+        <f:event type="preRenderView" listener="#{netzController.load}" />
+    </f:metadata>
+
+    <div class="container">
+        <h1>Geisternetz bearbeiten</h1>
+
+        <h:messages globalOnly="true" />
+
+        <h:form id="editForm">
+            <div class="form-grid">
+
+                <!-- Status -->
+                <div class="field">
+                    <label for="status">Status:</label>
+                    <h:selectOneMenu id="status" value="#{netzController.aktuell.status}">
+                        <f:selectItem itemLabel="GEMELDET"       itemValue="GEMELDET" />
+                        <f:selectItem itemLabel="BEVORSTEHEND"   itemValue="BEVORSTEHEND" />
+                        <f:selectItem itemLabel="GEBORGEN"       itemValue="GEBORGEN" />
+                        <f:selectItem itemLabel="VERSCHOLLEN"    itemValue="VERSCHOLLEN" />
+                    </h:selectOneMenu>
+                </div>
+
+                <!-- Bergende Person -->
+                <div class="field">
+                    <label for="bergende">Bergende Person:</label>
+                    <h:selectOneMenu id="bergende" value="#{netzController.selectedPersonId}">
+                        <f:selectItem itemLabel="-- bitte wählen --" noSelectionOption="true" />
+                        <f:selectItems value="#{netzController.allePersonen}"
+                                       var="p"
+                                       itemValue="#{p.id}"
+                                       itemLabel="#{p.name} (#{p.phone})"/>
+                    </h:selectOneMenu>
+                </div>
+
+                <!-- Beschreibung -->
+                <div class="field">
+                    <label for="beschreibung">Beschreibung:</label>
+                    <h:inputTextarea id="beschreibung"
+                                     value="#{netzController.aktuell.beschreibung}"
+                                     rows="4" cols="40"/>
+                </div>
+
+                <!-- Größe + Breite -->
+                <div class="row-2">
+                    <div class="field">
+                        <label for="groesse">Größe (m):</label>
+                        <h:inputText id="groesse" value="#{netzController.aktuell.groesse}" />
+                    </div>
+                    <div class="field">
+                        <label for="lat">Breite (Lat, z. B. 54.1234):</label>
+                        <h:inputText id="lat" value="#{netzController.aktuell.latitude}" />
+                    </div>
+                </div>
+
+                <!-- Länge -->
+                <div class="field">
+                    <label for="lon">Länge (Lon, z. B. 10.5678):</label>
+                    <h:inputText id="lon" value="#{netzController.aktuell.longitude}" />
+                </div>
+
+                <!-- Aktionen -->
+                <div class="actions">
+                    <h:commandButton value="Speichern" action="#{netzController.speichern}" />
+                    <h:link value="Abbrechen" outcome="index?faces-redirect=true"/>
+                </div>
+
+            </div>
+        </h:form>
+    </div>
+
+</h:body>
+</html>
