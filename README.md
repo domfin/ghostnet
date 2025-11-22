@@ -33,11 +33,11 @@ Für den Start der Anwendung wird eine Payara-Micro-6.x-Version benötigt.
 
 ### Payara Micro herunterladen
 
-1. Website von Payara öffnen (Download-Bereich für **Payara Micro 6**).  
+1. Download-Seite öffnen: https://payara.fish/downloads/payara-platform-community-edition/ 
 2. Die aktuelle 6.x-Version von Payara Micro als JAR herunterladen.  
 3. Datei in folgendem Ordner ablegen: C:\work\ghostnet\tools\payara\payara-micro.jar
 4. Falls der Download einen anderen Namen trägt  
-(z. B. `payara-micro-6.2024.x.jar`), bitte in **payara-micro.jar** umbenennen.
+(z. B. `payara-micro-6.2025.x.jar`), bitte in **payara-micro.jar** umbenennen.
 
 Getestet wurde die Anwendung mit einer 6.x-Version von Payara Micro.
 
