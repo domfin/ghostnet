@@ -24,10 +24,10 @@ Eine H2-Datenbank wird automatisch erzeugt.
 ### Payara Micro (aufgrund GitHub-Limit geteilt)
 Im Verzeichnis: tools/payara/ liegen vier Archive:
 
-payara-micro.zip.001
-payara-micro.zip.002
-payara-micro.zip.003
-payara-micro.zip.004
+- payara-micro.zip.001
+- payara-micro.zip.002
+- payara-micro.zip.003
+- payara-micro.zip.004
 
 Diese ersetzen die ursprüngliche `payara-micro.jar`, weil GitHub einzelne Dateien nur bis **25 MB** akzeptiert.
 
@@ -35,15 +35,12 @@ Diese ersetzen die ursprüngliche `payara-micro.jar`, weil GitHub einzelne Datei
 
 1. Alle vier Dateien in denselben Ordner legen:  
    `tools/payara/`
-2. Rechtsklick → „Alle extrahieren“ (Windows)  
-   oder mit 7-Zip: „**Extract here**“
-3. Das Ergebnis ist:
-
-tools/payara/payara-micro.jar
+2. Rechtsklick → „Alle extrahieren“
+3. Das Ergebnis ist: tools/payara/payara-micro.jar
 
 Diese Datei wird **für den Start zwingend benötigt**.
 
-Automatisch erzeugte Ordner:
+### Automatisch erzeugte Ordner:
 - `db/` – Lokale H2-Datenbankdateien
 - `payara_rt/` – Arbeitsverzeichnis von Payara Micro
 - `target/` – Generiertes WAR-File
@@ -61,10 +58,10 @@ Keine zusätzliche Installation von Datenbanken oder Servern notwendig.
 
 1. Projekt nach **C:\work\ghostnet\\** kopieren.  
 2. Die vier Payara-Archive im Ordner `tools/payara/` **wieder zu einer Datei zusammenführen**:
-payara-micro.zip.001
-payara-micro.zip.002
-payara-micro.zip.003
-payara-micro.zip.004
+- payara-micro.zip.001
+- payara-micro.zip.002
+- payara-micro.zip.003
+- payara-micro.zip.004
 → Alle vier Dateien markieren → Rechtsklick → *„Alle extrahieren“*  
 → Ergebnis:
 tools/payara/payara-micro.jar
